@@ -2,14 +2,6 @@
 #include <string>
 #include <sstream>
 using namespace std;
-/*
-2 3 2
-dragons_Song .mp3 11b
-theGreatGig.flac 1000b
-file.txt 5b
-out.exe 100b
-inception.mkv 10000b
-*/
 #define music 0
 #define img   1
 #define mov   2
@@ -35,12 +27,27 @@ int main()
         string *str{new string[NumOfLines[i]]};
         for(int j=0;j<NumOfLines[i];j++)
         {
+/*
+2 3 2
+dragons.song .mp3 11b
+theGreatGig.flac 1000b
+file.txt 5b
+out.exe 100b
+inception.mkv 10000b
+*/
             getline(cin >> ws, str[j]);
             stringstream s(str[j]);
             string ext,str_size;
-            getline(s,ext,'.');
+            while(getline(s,ext,'.'));
+            //cout<<"1-ext= "<<ext<<endl;
+            s.str("");
+            s.clear();
+            s<<ext;
+            //cout<<"s<<ext "<<s.str()<<endl;
             getline(s,ext,' ');
+            //cout<<"2-ext= "<<ext<<endl;
             getline(s,str_size,'b');
+            //cout<<"size= "<<str_size<<endl;
             int int_size;
             stringstream ss(str_size);
             //s<<;
@@ -59,7 +66,7 @@ int main()
             {
                 total_size[mov]+=int_size;
             }
-            else if(ext=="7z"||ext== "txt"||ext== "zip")
+            else
             {
                 total_size[other]+=int_size;
             }
