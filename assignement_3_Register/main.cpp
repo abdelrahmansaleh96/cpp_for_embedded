@@ -12,7 +12,7 @@ int main(void)
     u32 x=0x0;
     u32 y;
     u8 c;
-    clsRegister<u32,u32> x_reg(&x , READ_AND_WRITE);
+    clsRegister x_reg(&x , READ_AND_WRITE);
 
     x_reg.setRegisterValue(0xff);
     printf("%x\n",x);
